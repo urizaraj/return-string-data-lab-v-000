@@ -5,7 +5,7 @@
   <div style="margin-bottom: 1rem;">
     <h2><%= product.name %></h2>
     <%= content_tag :div, truncate(product.description), id: "d-#{product.id}" %>
-    <%= tag :p, id: "i-#{product.id}" %>
+    <%= content_tag :div, '', id: "i-#{product.id}" %>
     <%= button_tag 'More Info', class: 'js-more', data: { id: product.id } %>
   </div>
 
