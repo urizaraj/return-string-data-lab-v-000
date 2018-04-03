@@ -18,7 +18,8 @@ $(() => {
     fetch(`products/${id}/description`)
       .then(response => response.text())
       .then(text => {
-        $(`d-${id}`).text = text
+        
+        $(`d-${id}`).text(text)
       })
 
   })
