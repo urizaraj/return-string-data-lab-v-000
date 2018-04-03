@@ -19,7 +19,7 @@ $(() => {
       .then(response => response.text())
       .then(text => {
         console.log('got this far', text)
-        $(`d-${id}`).text(text)
+        $(`#d-${id}`).text(text)
       })
 
   })
