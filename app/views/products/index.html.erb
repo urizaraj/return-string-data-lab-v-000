@@ -24,7 +24,7 @@ $(() => {
     fetch(`products/${id}/inventory`)
       .then(response => response.text())
       .then(text => {
-
+        $(`#i-${id}`).text(text)
       })
   })
 })
