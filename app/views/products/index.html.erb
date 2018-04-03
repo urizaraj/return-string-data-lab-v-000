@@ -5,6 +5,7 @@
   <div style="margin-bottom: 1rem;">
     <h2><%= product.name %></h2>
     <%= content_tag :div, truncate(product.description), id: "d-#{product.id}" %>
+    <%= content_tag :div, '', id: "i-#{product.id}" %>
     <%= button_tag 'More Info', class: 'js-more', data: { id: product.id } %>
   </div>
 
@@ -15,7 +16,17 @@
 $(() => {
   $('.js-more').on('click', function() {
     const id = $(this).data('id')
-    fetch(`products/${id}/description`).then(response => response.text()).then(text => console.log(text))
+    fetch(`products/${id}/description`)
+      .then(response => response.text())
+      .then(text => {
+        $(`#d-${id}`).text(text)
+      })
+    fetch(`products/${id}/inventory`)
+      .then(response => response.text())
+      .then(result => {
+        const text = (result == 'true' ? 'Available' : 'Sold Out')
+        $(`#i-${id}`).text(text)
+      })
   })
 })
 
