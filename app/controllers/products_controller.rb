@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def description
-    render plain: @product.description
+    render plain: (@product.description || 'no description')
   end
 
   def new
