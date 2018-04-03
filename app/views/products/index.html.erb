@@ -15,7 +15,12 @@
 $(() => {
   $('.js-more').on('click', function() {
     const id = $(this).data('id')
-    fetch(`products/${id}/description`).then(response => response.text()).then(text => console.log(text))
+    fetch(`products/${id}/description`)
+      .then(response => response.text())
+      .then(text => {
+        $(`d-${id}`).text = text
+      })
+    
   })
 })
 
